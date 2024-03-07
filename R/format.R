@@ -613,3 +613,55 @@ time_format <- function(secs) {
         }, secs)
     }
 }
+
+
+
+#' @title Standardize argument names
+#' @name standardize_param
+#' @description
+#' When multiple aliases are provided for a single argument, this function
+#' looks through the provided list of parameters for up to 1 match and returns
+#' the value of that matched param. 
+#' @param args_list a list of parameters to check
+#' @param params character. Possible aliases for the parameter
+#' @returns returns NULL if none are present. If only one is present, the value
+#' of that param is returned
+#' @examples
+#' f1 <- function(col = NULL, color = NULL, colour = NULL) {
+#'   a <- get_args_list()
+#'   col <- standardize_param(a, c("col", "color", "colour"))
+#'   print(col)
+#' }
+#' f2 <- function(col = NA, color = NA, colour = NA) {
+#'   a <- get_args_list()
+#'   col <- standardize_param(a, c("col", "color", "colour"))
+#'   print(col)
+#' }
+#' f3 <- function(...) {
+#'   a <- list(...)
+#'   col <- standardize_param(a, c("col", "color", "colour"))
+#'   print(col)
+#' }
+#' 
+#' f1(col = "green")
+#' f2(color = "red")
+#' f3(colour = "blue")
+#' @export
+standardize_param <- function(args_list, params) {
+  a <- args_list[params]
+  
+  isnull <- vapply(a, is.null, FUN.VALUE = logical(length = 1L))
+  isna <- is.na(a)
+  present <- !(isnull | isna)
+  
+  if (sum(present) > 1L) {
+    stop(sprintf("Only one of \"%s\" can be provided", paste0(params, collapse = "\", \"")))
+  }
+  
+  out <- unlist(a[present])
+  names(out) <- NULL
+  
+  return(out)
+}
+
+

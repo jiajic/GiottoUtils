@@ -224,3 +224,32 @@ test_that("further color decision making works", {
         options("knitr.in.progress" = knit)
     })
 })
+
+
+test_that("standardize_param works", {
+  f1 <- function(col = NULL, color = NULL, colour = NULL) {
+    a <- get_args_list()
+    col <- standardize_param(a, c("col", "color", "colour"))
+    return(col)
+  }
+  f2 <- function(col = NA, color = NA, colour = NA) {
+    a <- get_args_list()
+    col <- standardize_param(a, c("col", "color", "colour"))
+    return(col)
+  }
+  f3 <- function(...) {
+    a <- list(...)
+    col <- standardize_param(a, c("col", "color", "colour"))
+    return(col)
+  }
+
+  expect_identical(f1(col = "green"), "green")
+  expect_identical(f2(color = "red"), "red")
+  expect_identical(f3(colour = "blue"), "blue")
+})
+
+
+
+
+
+
