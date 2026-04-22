@@ -14,6 +14,7 @@ pbar(
   label = NA_character_,
   trace = FALSE,
   initiate = TRUE,
+  finalize = FALSE,
   auto_finish = TRUE,
   on_exit = !identical(envir, globalenv()),
   enable = getOption("progressr.enable", TRUE),
@@ -26,7 +27,7 @@ pbar(
 \item{along}{(vector; alternative) Alternative that sets
 \code{steps = length(along)}.}
 
-\item{offset, scale}{(integer; optional) scale and offset applying transform
+\item{offset, scale}{(integer; optional) scale and offset applying the transform
 \code{steps <- scale * steps + offset}.}
 
 \item{transform}{(function; optional) A function that takes the effective
@@ -46,6 +47,9 @@ not.}
 
 \item{initiate}{(logical) If TRUE, the progressor will signal a
 \link[progressr]{progression} 'initiate' condition when created.}
+
+\item{finalize}{(logical) If TRUE, the progressor signals a \link[progressr]{progression}
+'shutdown' condition when finalized by the garbage collector.}
 
 \item{auto_finish}{(logical) If TRUE, then the progressor will signal a
 \link[progressr]{progression} 'finish' condition as soon as the last step has been reached.}
