@@ -1,3 +1,10 @@
+# GiottoUtils 0.2.6 (TBD)
+
+## Enhancement
+- `"disk"` ref for `suite_install()` installs the on-disk build set (`gsource` branches + *GiottoDisk*)
+- *GiottoDisk* is now recognized as a Giotto Suite extension module
+
+
 # GiottoUtils 0.2.5 (2025/05/21)
 
 ## New
