@@ -227,7 +227,7 @@ suite_install <- function(
     GiottoClass = "giotto-suite/GiottoClass@R4.4.0",
     GiottoVisuals = "giotto-suite/GiottoVisuals@R4.4.0",
     Giotto = "giotto-suite/Giotto@R4.4.0",
-    GiottoData = "giotto-suite/GiottoData", # TODO
+    GiottoData = "giotto-suite/GiottoData@R4.1.0", # only R-locked branch
     GiottoDB = "giotto-suite/GiottoDB" # TODO
 )
 
@@ -236,7 +236,7 @@ suite_install <- function(
     GiottoClass = "giotto-suite/GiottoClass@R4.1.0",
     GiottoVisuals = "giotto-suite/GiottoVisuals@R4.1.0",
     Giotto = "giotto-suite/Giotto@R4.1.0",
-    GiottoData = "giotto-suite/GiottoData", # TODO
+    GiottoData = "giotto-suite/GiottoData@R4.1.0",
     GiottoDB = "giotto-suite/GiottoDB" # TODO
 )
 
